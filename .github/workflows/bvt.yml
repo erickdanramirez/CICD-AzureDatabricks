@@ -1,8 +1,7 @@
 name: Build Verification Test
 
 on:  
-  pull_request:
-    branches: [ "main" ]
+  pull_request:    
   workflow_dispatch:
 
 jobs:  
@@ -36,5 +35,5 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
+          DEFAULT_BRANCH: $(echo ${GITHUB_REF#refs/heads/})
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
